@@ -10,7 +10,7 @@ with open(f"{name}_private_key.txt") as private_key_file:
 		private_key_list[i] = int(x)
 	private_key = tuple(private_key_list)
 
-mycon = sqltor.connect(host="localhost", user="root", passwd="Fadeel@2006", database="rsa")
+mycon = sqltor.connect(host="localhost", user="root", passwd="", database="rsa")
 try:
 	cursor = mycon.cursor()
 	cursor.execute("select * from cipher;")
@@ -31,4 +31,5 @@ except mysql.connector.Error as err:
 	print(f"Error {err}")
 finally:
 	cursor.close()
+
 	mycon.close()
