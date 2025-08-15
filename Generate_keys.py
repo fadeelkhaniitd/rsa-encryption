@@ -13,7 +13,7 @@ with open(f"{name}_private_key.txt", 'w') as private_key_file:
 	private_key_str += str(private_key[1])
 	private_key_file.write(private_key_str)
 
-mycon = sqltor.connect(host="localhost", user="root", passwd="Fadeel@2006", database="rsa")
+mycon = sqltor.connect(host="localhost", user="root", passwd="", database="rsa")
 try:
 	cursor = mycon.cursor()
 	cursor.execute(f"insert into keystable (name, pk1, pk2) values('{name}','{public_key[0]}','{public_key[1]}') on duplicate key update pk1='{public_key[0]}',pk2='{public_key[1]}';")
@@ -25,4 +25,5 @@ except mysql.connector.Error as err:
 	print(f"Error {err}")
 finally:
 	cursor.close()
+
 	mycon.close()
