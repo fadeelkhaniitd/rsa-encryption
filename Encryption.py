@@ -4,7 +4,7 @@ import mysql.connector as sqltor
 sender = input("Enter your name (sender): ")
 receiver = input("Enter receiver's name: ")
 
-mycon = sqltor.connect(host="localhost", user="root", passwd="Fadeel@2006", database="rsa")
+mycon = sqltor.connect(host="localhost", user="root", passwd="", database="rsa")
 try:
 	cursor = mycon.cursor()
 	cursor.execute("select * from keystable;")
@@ -27,4 +27,5 @@ except mysql.connector.Error as err:
 	print(f"Error {err}")
 finally:
 	cursor.close()
+
 	mycon.close()
